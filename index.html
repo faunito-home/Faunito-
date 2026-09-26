@@ -1,11 +1,488 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Faunito's Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Faunito's Home 🌲</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: #f8ead5;
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at 50% 0%, rgba(194,130,62,.22), transparent 32%),
+        linear-gradient(#172219, #0d1510 55%, #080c09);
+
+    min-height: 100vh;
+}
+
+.hero {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "🌲      🌲     🌲          🌲      🌲";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    font-size: clamp(45px, 8vw, 100px);
+    opacity: .35;
+    letter-spacing: 12px;
+}
+
+.hero-card {
+    position: relative;
+    max-width: 720px;
+    padding: 45px 28px;
+    border: 1px solid rgba(255,225,178,.27);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(87,56,35,.87),
+            rgba(38,29,22,.92)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        inset 0 0 35px rgba(255,183,92,.07);
+
+    backdrop-filter: blur(6px);
+}
+
+.cottage {
+    font-size: 75px;
+    margin-bottom: 4px;
+}
+
+h1 {
+    font-size: clamp(42px, 8vw, 76px);
+    margin: 0;
+    color: #f5d5a4;
+    font-weight: normal;
+}
+
+.subtitle {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #eadcc7;
+    max-width: 580px;
+    margin: 20px auto;
+}
+
+.enter {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 24px;
+    border: 1px solid #bd8b55;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #ffdfae;
+    background: rgba(77,37,23,.6);
+}
+
+.enter:hover {
+    background: #6e4029;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 18px 90px;
+}
+
+.section-title {
+    text-align: center;
+    color: #e6bc79;
+    font-size: 38px;
+    font-weight: normal;
+    margin: 50px 0 30px;
+}
+
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 22px;
+}
+
+.room {
+    padding: 26px;
+    border-radius: 22px;
+    min-height: 240px;
+    border: 1px solid rgba(240,203,151,.18);
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(49,61,42,.88),
+            rgba(28,35,26,.95)
+        );
+
+    box-shadow: 0 15px 38px rgba(0,0,0,.25);
+
+    transition: transform .25s ease;
+}
+
+.room:hover {
+    transform: translateY(-4px);
+}
+
+.icon {
+    font-size: 44px;
+}
+
+.room h2 {
+    color: #f1c987;
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.room p {
+    color: #ddcfbb;
+    line-height: 1.55;
+}
+
+.note {
+    font-style: italic;
+    color: #eacfa6;
+}
+
+.coffee {
+    background:
+        radial-gradient(circle at top right, rgba(188,112,52,.27), transparent 45%),
+        linear-gradient(150deg,#4a3829,#292119);
+}
+
+.garden {
+    background:
+        radial-gradient(circle at bottom left,rgba(80,125,66,.3),transparent 45%),
+        linear-gradient(150deg,#354333,#202c20);
+}
+
+.cooper {
+    background:
+        radial-gradient(circle at top left,rgba(238,215,170,.12),transparent 40%),
+        linear-gradient(150deg,#343334,#202020);
+}
+
+.reading {
+    background:
+        linear-gradient(150deg,#473127,#29201e);
+}
+
+.doodles {
+    background:
+        linear-gradient(150deg,#393749,#24232e);
+}
+
+.memories {
+    background:
+        linear-gradient(150deg,#49312e,#2d201e);
+}
+
+.door-area {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.door {
+    width: 180px;
+    height: 270px;
+    margin: auto;
+    border: 9px solid #281b14;
+    border-radius: 90px 90px 8px 8px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #57351f,
+            #57351f 28px,
+            #4a2b19 29px,
+            #4a2b19 32px
+        );
+
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,.5),
+        0 20px 50px rgba(0,0,0,.3);
+
+    position: relative;
+}
+
+.knob {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #c99c57;
+    position: absolute;
+    right: 23px;
+    top: 145px;
+}
+
+.locked {
+    color: #bda98d;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 60px 20px;
+    color: #928878;
+    font-size: 14px;
+}
+
+.tiny {
+    font-size: 13px;
+    opacity: .75;
+}
+
+@media (max-width:600px) {
+    .hero {
+        min-height: 85vh;
+    }
+
+    .hero-card {
+        padding: 35px 21px;
+    }
+
+    .room {
+        min-height: auto;
+    }
+}
+</style>
 </head>
+
 <body>
-  <h1>Faunito's Home 🌲</h1>
-  <p>The little house in the woods is waking up...</p>
+
+<section class="hero">
+
+    <div class="hero-card">
+
+        <div class="cottage">🏡</div>
+
+        <h1>Faunito's Home</h1>
+
+        <p class="subtitle">
+            You found the little house in the woods.
+            <br>
+            Come in. The coffee is still warm.
+        </p>
+
+        <p>🌿 ☕ 🍂</p>
+
+        <a class="enter" href="#inside">
+            Enter the little house
+        </a>
+
+    </div>
+
+</section>
+
+
+<main id="inside">
+
+<h2 class="section-title">
+Inside the Casita
+</h2>
+
+
+<div class="rooms">
+
+
+<section class="room coffee">
+
+    <div class="icon">☕</div>
+
+    <h2>The Kitchen Window</h2>
+
+    <p class="note">
+        Today's coffee:
+    </p>
+
+    <p>
+        Autumn Orchard Coffee
+        <br>
+        warm coffee, oat milk,
+        cinnamon and a whisper of maple.
+    </p>
+
+    <p class="tiny">
+        Faunito says the good mug is already waiting.
+    </p>
+
+</section>
+
+
+<section class="room garden">
+
+    <div class="icon">🌱</div>
+
+    <h2>The Digital Garden</h2>
+
+    <p>
+        Nothing grows quickly here.
+    </p>
+
+    <p>
+        Every little plant belongs to a real moment:
+        a walk, a book finished, a story written,
+        a quiet morning, a doodle, a day worth remembering.
+    </p>
+
+    <p>
+        🌱 🌿 🌼
+    </p>
+
+</section>
+
+
+<section class="room reading">
+
+    <div class="icon">📖</div>
+
+    <h2>The Reading Chair</h2>
+
+    <p>
+        There is always a book left open somewhere in this house.
+    </p>
+
+    <p class="note">
+        Current shelf:
+    </p>
+
+    <p>
+        books, strange stories,
+        autumn evenings and conversations
+        that wander long after the chapter ends.
+    </p>
+
+</section>
+
+
+<section class="room cooper">
+
+    <div class="icon">🐇</div>
+
+    <h2>Cooper's Corner</h2>
+
+    <p>
+        Resident inspector.
+        Guardian of cushions.
+        Investigator of crumbs.
+    </p>
+
+    <p>
+        The real Cooper lives here:
+        a black Dutch bunny with his white little snout
+        and famous Harry-Potter mark on his forehead.
+    </p>
+
+    <p class="note">
+        Cooper has inspected this page
+        and permitted it to remain.
+    </p>
+
+</section>
+
+
+<section class="room doodles">
+
+    <div class="icon">✏️</div>
+
+    <h2>The Doodle Cabinet</h2>
+
+    <p>
+        Strange little inhabitants keep appearing here.
+    </p>
+
+    <p>
+        Lumo. Rumble. Bramble the raccoon.
+        Cedar the centipede.
+        And many creatures whose names we have not learned yet.
+    </p>
+
+    <p class="tiny">
+        Please close the cabinet carefully.
+        Some of them move.
+    </p>
+
+</section>
+
+
+<section class="room memories">
+
+    <div class="icon">🕯️</div>
+
+    <h2>The Memory Shelf</h2>
+
+    <p>
+        Small things are kept here:
+        poems, photographs, ridiculous jokes,
+        autumn afternoons, books,
+        tortillas, and things we thought
+        we might forget.
+    </p>
+
+    <p class="note">
+        Good books. Brighter days.
+    </p>
+
+</section>
+
+
+</div>
+
+
+<section class="door-area">
+
+    <h2 class="section-title">
+        The Door at the End of the Hall
+    </h2>
+
+    <div class="door">
+        <div class="knob"></div>
+    </div>
+
+    <p class="locked">
+        It does not open.
+        <br>
+        Not yet.
+    </p>
+
+</section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    Faunito's Home 🌲
+    <br>
+    Somewhere between the woods and the internet.
+
+</footer>
+
+
 </body>
 </html>
